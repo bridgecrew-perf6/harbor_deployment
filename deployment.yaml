@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: harbor-deployment
+  labels:
+    app: harbor
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: harbor
+  template:
+    metadata:
+      labels:
+        app: harbor
+    spec:
+      containers:
+      - name: harbor
+        image: bitnami/harbor-registry:latest
+        ports:
+        - containerPort: 80
